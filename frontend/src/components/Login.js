@@ -14,14 +14,14 @@ export const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const formdata = new FormData();
+        formdata.append("username", state.username);
+        formdata.append("password", state.password);
+
         fetch(loginUrl, {
             method: 'POST',
-            headers: {
-                'Content-Type': "application/json"
-            },
-            body: JSON.stringify(state),
-            mode: 'cors'
-        }).catch((error) => { console.log(error); })
+            body: formdata,
+        }).catch((error) => { console.log(error); });
     }
 
 
