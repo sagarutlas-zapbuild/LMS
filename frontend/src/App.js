@@ -4,6 +4,8 @@ import './App.css';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
 import { Link } from "react-router-dom"
+import Student from './components/Student';
+import "../node_modules/bootstrap/scss/bootstrap";
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/register" component={Register}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/student" component={Student}/>
       </Switch>
       </Router>
   );
