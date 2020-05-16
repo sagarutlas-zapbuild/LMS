@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState } from "react";
 import { registerUrl } from './res/urls';
+import { Link } from 'react-router-dom';
 
 export const Register = (props) => {
 
@@ -42,6 +43,7 @@ export const Register = (props) => {
         }).catch((error) => { console.log(error); })
     }
     return (
+        <div>
         <Form onSubmit={(e) => { handleSubmit(e); }}>
             <Form.Row> <h2>Sign Up</h2> </Form.Row>
             <Form.Row>
@@ -64,8 +66,8 @@ export const Register = (props) => {
                 <Form.Label >I am a</Form.Label>
                 <Form.Control as="select" name="is_type" value = {state.is_type} onChange={(e) => { handleChange(e); }}>
                     <option value="Student">Student</option>
-                    <option value="Teacher">Teacher</option>
-                    <option value="Parent">Parent</option>
+                    <option disabled value="Teacher">Teacher</option>
+                    <option disabled value="Parent">Parent</option>
                 </Form.Control>
             </Form.Row>
             <Form.Row>
@@ -79,5 +81,6 @@ export const Register = (props) => {
             </Form.Row>
 
         </Form>
+        <Link to = "/login">Already have an account</Link></div>
     );
 }

@@ -3,9 +3,9 @@ import Form from 'react-bootstrap/Form'
 import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import { loginUrl } from './res/urls';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
-export const Login = () => {
+export const Login = (props) => {
 
     const [state, setState] = useState({
         email: "",
@@ -32,7 +32,8 @@ export const Login = () => {
               localStorage.setItem('id', json.user.id);
               localStorage.setItem('email', json.user.email);
               localStorage.setItem('name', json.user.name);
-              localStorage.setItem('is_type', json.user.is_type)
+              localStorage.setItem('is_type', json.user.is_type);
+              props.update();
             }).catch((err) => {
               console.log(err);
             });
@@ -49,7 +50,7 @@ export const Login = () => {
     }
     if (localStorage.getItem('token') ? true : false) {
         if(localStorage.getItem('is_type') === "Student"){
-            return <Redirect to = "/student"/>
+            return <Redirect to = "/home"/>
         }
     }
     else{
@@ -66,5 +67,6 @@ export const Login = () => {
         <Form.Row>
             <Button type='submit'>Login</Button>
         </Form.Row>
-    </Form></div>);}
+    </Form>
+    <Link to = "/register">Create an account</Link></div>);}
 }
